@@ -39,6 +39,7 @@ public class QuizManager : MonoBehaviour
         currentPageIndex++;
         if (currentPageIndex == data.pages.Count)
         {
+            // Destroy self when the page is done. TODO: allow to revisit the quiz without restart
             Destroy(gameObject);
         } else {
             SetCurrentPage();
@@ -47,19 +48,23 @@ public class QuizManager : MonoBehaviour
 
     public void CheckAnswer(int answer)
     {
+        // Check answer
         if (currentPage.correctAnswer == answer)
         {
             audioSource.resource = correctSound;
             NextPage();
         } else
         {
-            answers[answer].GetComponent<Animator>().Play("Incorrect");
+            answers[answer].GetComponent<Animator>().Play("Incorrect"); // Show incorrect button animation
             audioSource.resource = incorrectSound;
             hintText.SetActive(true);
         }
-        audioSource.Play();
+        audioSource.Play(); // Play audio either correct or incorrect
     }
 
+    /**
+        Updates the quiz UI to the current page, either explanation or question
+    */
     void SetCurrentPage()
     {
         hintText.SetActive(false);
@@ -72,6 +77,7 @@ public class QuizManager : MonoBehaviour
         answersHolder.SetActive(currentPage.pageType == PageType.Question);
         continueButton.SetActive(currentPage.pageType == PageType.Explanation);
 
+        // If question then we may update answers based on how many there are
         if (currentPage.pageType == PageType.Question)
         {
             answers[0].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[0]);
