@@ -11,9 +11,11 @@ public class QuizPage
     // The question
     [TextArea] public string title;
 
-    [TextArea] public string text1;
+    [TextArea] public string text;
 
-    [TextArea] public string text2;
+    [TextArea] public string hintText;
+
+    public Sprite image;
 
     public string[] answers;
     public int correctAnswer;

@@ -1,7 +1,8 @@
-using System.Collections.Generic;
 using TMPro;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
@@ -12,55 +13,86 @@ public class QuizManager : MonoBehaviour
     private QuizPage currentPage => data.pages[currentPageIndex];
 
     public GameObject title;
-    public GameObject text1;
-    public GameObject text2;
+    public GameObject text;
+    public GameObject hintText;
     public GameObject answersHolder;
     public GameObject continueButton;
+    public GameObject image;
+
+    public AudioSource audioSource;
+    public AudioResource correctSound;
+    public AudioResource incorrectSound;
+
+    private GameObject[] answers = new GameObject[4];
 
     void Start()
     {
+        answers[0] = answersHolder.GetNamedChild("Answer1");
+        answers[1] = answersHolder.GetNamedChild("Answer2");
+        answers[2] = answersHolder.GetNamedChild("Answer3");
+        answers[3] = answersHolder.GetNamedChild("Answer4");
         SetCurrentPage();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void NextPage()
     {
         currentPageIndex++;
-        print("Page: " + currentPageIndex);
-        SetCurrentPage();
+        if (currentPageIndex == data.pages.Count)
+        {
+            Destroy(gameObject);
+        } else {
+            SetCurrentPage();
+        }
     }
 
     public void CheckAnswer(int answer)
     {
         if (currentPage.correctAnswer == answer)
         {
+            audioSource.resource = correctSound;
             NextPage();
         } else
         {
-            print("Wrong answer!");
+            answers[answer].GetComponent<Animator>().Play("Incorrect");
+            audioSource.resource = incorrectSound;
+            hintText.SetActive(true);
         }
+        audioSource.Play();
     }
 
     void SetCurrentPage()
     {
+        hintText.SetActive(false);
         title.GetComponent<TextMeshProUGUI>().SetText(currentPage.title);
-        text1.GetComponent<TextMeshProUGUI>().SetText(currentPage.text1);
-        text2.GetComponent<TextMeshProUGUI>().SetText(currentPage.text2);
+        text.GetComponent<TextMeshProUGUI>().SetText(currentPage.text);
+        hintText.GetComponent<TextMeshProUGUI>().SetText(currentPage.hintText);
+        image.GetComponent<Image>().sprite = currentPage.image;
+        image.SetActive(currentPage.image != null);
 
         answersHolder.SetActive(currentPage.pageType == PageType.Question);
         continueButton.SetActive(currentPage.pageType == PageType.Explanation);
 
         if (currentPage.pageType == PageType.Question)
         {
-            answersHolder.GetNamedChild("Answer1").GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[0]);
-            answersHolder.GetNamedChild("Answer2").GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[1]);
-            answersHolder.GetNamedChild("Answer3").GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[2]);
-            answersHolder.GetNamedChild("Answer4").GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[3]);
+            answers[0].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[0]);
+            answers[1].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[1]);
+            if (currentPage.answers.Length > 2)
+            {
+                answers[2].SetActive(true);
+                answers[2].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[2]);
+            } else
+            {
+                answers[2].SetActive(false);
+            }
+            
+            if (currentPage.answers.Length > 3)
+            {
+                answers[3].SetActive(true);
+                answers[3].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[3]);
+            } else
+            {
+                answers[3].SetActive(false);
+            }
         }
     }
 }
