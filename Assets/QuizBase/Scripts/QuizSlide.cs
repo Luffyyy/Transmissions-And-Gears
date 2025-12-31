@@ -12,12 +12,3 @@ public class QuizSlide : ScriptableObject
 
     public GameObject arPrefab;
 }
-
-[CreateAssetMenu(fileName = "QuizQuestion", menuName = "Scriptable Objects/QuizQuestion")]
-public class QuizQuestion : QuizSlide
-{
-    [TextArea] public string hintText;
-
-    public string[] answers;
-    public int correctAnswer;
-}

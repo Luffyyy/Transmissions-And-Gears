@@ -13,6 +13,7 @@ public class QuizManager : MonoBehaviour
     private int currentSlideIndex;
     private QuizSlide currentSlide => slides[currentSlideIndex];
 
+    public GameObject topPanel;
     public GameObject title;
     public GameObject text;
     public GameObject hintText;
@@ -83,6 +84,9 @@ public class QuizManager : MonoBehaviour
         prevButton.SetActive(currentSlideIndex != 0);
         nextButton.SetActive(!isQuiz && currentSlideIndex != (slides.Count-1));
         hintText.SetActive(false);
+
+        // Force update (fixes a bug with Vertical Layout)
+        LayoutRebuilder.ForceRebuildLayoutImmediate(topPanel.GetComponent<RectTransform>());
 
         if (currentARPrefab)
         {

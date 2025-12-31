@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5662e17f422c92042a22771788a04960, type: 3}
+  m_Name: Slide5-A
+  m_EditorClassIdentifier: Assembly-CSharp::QuizSlide
+  title: "\u05D2\u05DC\u05D2\u05DC\u05D9 \u05E9\u05D9\u05E0\u05D9\u05D9\u05DD \u2013
+    \u05DB\u05D9\u05D5\u05D5\u05E0\u05D9 \u05E1\u05D9\u05D1\u05D5\u05D1"
+  image: {fileID: 0}
+  text: "\u05DB\u05D9\u05D5\u05D5\u05E0\u05D9\u05DD \u05D6\u05D4\u05D9\u05DD"
+  arPrefab: {fileID: 2971782887518591364, guid: 1792913fb644f264faf8711eaa40c39d, type: 3}
