@@ -7,7 +7,8 @@ public class QuizStarter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Instantiate(quiz, GameObject.Find("UI").transform);
+        var ui = Instantiate(quiz, GameObject.Find("UI").transform);
+        ui.GetComponent<QuizManager>().arAnchor = transform;
     }
 
     // Update is called once per frame

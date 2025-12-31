@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.XR.CoreUtils;
 using UnityEngine;
@@ -7,16 +8,17 @@ using UnityEngine.UI;
 public class QuizManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public QuizData data;
+    public List<QuizSlide> slides;
 
-    private int currentPageIndex;
-    private QuizPage currentPage => data.pages[currentPageIndex];
+    private int currentSlideIndex;
+    private QuizSlide currentSlide => slides[currentSlideIndex];
 
     public GameObject title;
     public GameObject text;
     public GameObject hintText;
     public GameObject answersHolder;
-    public GameObject continueButton;
+    public GameObject prevButton;
+    public GameObject nextButton;
     public GameObject image;
 
     public AudioSource audioSource;
@@ -25,34 +27,37 @@ public class QuizManager : MonoBehaviour
 
     private GameObject[] answers = new GameObject[4];
 
+    private GameObject currentARPrefab;
+    public Transform arAnchor;
+
     void Start()
     {
         answers[0] = answersHolder.GetNamedChild("Answer1");
         answers[1] = answersHolder.GetNamedChild("Answer2");
         answers[2] = answersHolder.GetNamedChild("Answer3");
         answers[3] = answersHolder.GetNamedChild("Answer4");
-        SetCurrentPage();
+        SetcurrentSlide();
     }
 
-    public void NextPage()
+    public void NextSlide()
     {
-        currentPageIndex++;
-        if (currentPageIndex == data.pages.Count)
-        {
-            // Destroy self when the page is done. TODO: allow to revisit the quiz without restart
-            Destroy(gameObject);
-        } else {
-            SetCurrentPage();
-        }
+        currentSlideIndex++;
+        SetcurrentSlide();
+    }
+
+    public void PrevSlide()
+    {
+        currentSlideIndex--;
+        SetcurrentSlide();
     }
 
     public void CheckAnswer(int answer)
     {
         // Check answer
-        if (currentPage.correctAnswer == answer)
+        if ((currentSlide as QuizQuestion).correctAnswer == answer)
         {
             audioSource.resource = correctSound;
-            NextPage();
+            NextSlide();
         } else
         {
             answers[answer].GetComponent<Animator>().Play("Incorrect"); // Show incorrect button animation
@@ -65,36 +70,56 @@ public class QuizManager : MonoBehaviour
     /**
         Updates the quiz UI to the current page, either explanation or question
     */
-    void SetCurrentPage()
+    void SetcurrentSlide()
     {
         hintText.SetActive(false);
-        title.GetComponent<TextMeshProUGUI>().SetText(currentPage.title);
-        text.GetComponent<TextMeshProUGUI>().SetText(currentPage.text);
-        hintText.GetComponent<TextMeshProUGUI>().SetText(currentPage.hintText);
-        image.GetComponent<Image>().sprite = currentPage.image;
-        image.SetActive(currentPage.image != null);
+        title.GetComponent<TextMeshProUGUI>().SetText(currentSlide.title);
+        text.GetComponent<TextMeshProUGUI>().SetText(currentSlide.text);
+        image.GetComponent<Image>().sprite = currentSlide.image;
+        image.SetActive(currentSlide.image != null);
 
-        answersHolder.SetActive(currentPage.pageType == PageType.Question);
-        continueButton.SetActive(currentPage.pageType == PageType.Explanation);
+        var isQuiz = currentSlide is QuizQuestion;
+        answersHolder.SetActive(isQuiz);
+        prevButton.SetActive(currentSlideIndex != 0);
+        nextButton.SetActive(!isQuiz && currentSlideIndex != (slides.Count-1));
+        hintText.SetActive(false);
+
+        if (currentARPrefab)
+        {
+            Destroy(currentARPrefab);
+        }
+
+        if (currentSlide.arPrefab != null)
+        {
+            currentARPrefab = Instantiate(currentSlide.arPrefab);
+            currentARPrefab.transform.SetParent(arAnchor, true);
+
+            currentARPrefab.transform.localPosition = new Vector3(-0.15f, 0.5f, 0);
+            currentARPrefab.transform.localRotation = Quaternion.Euler(90, 0, 0);
+        }
 
         // If question then we may update answers based on how many there are
-        if (currentPage.pageType == PageType.Question)
+        if (isQuiz)
         {
-            answers[0].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[0]);
-            answers[1].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[1]);
-            if (currentPage.answers.Length > 2)
+            var currentQuestion = currentSlide as QuizQuestion;
+
+            hintText.GetComponent<TextMeshProUGUI>().SetText(currentQuestion.hintText);
+
+            answers[0].GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[0]);
+            answers[1].GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[1]);
+            if (currentQuestion.answers.Length > 2)
             {
                 answers[2].SetActive(true);
-                answers[2].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[2]);
+                answers[2].GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[2]);
             } else
             {
                 answers[2].SetActive(false);
             }
             
-            if (currentPage.answers.Length > 3)
+            if (currentQuestion.answers.Length > 3)
             {
                 answers[3].SetActive(true);
-                answers[3].GetComponentInChildren<TextMeshProUGUI>().SetText(currentPage.answers[3]);
+                answers[3].GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[3]);
             } else
             {
                 answers[3].SetActive(false);
