@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a53d0608c759764e948d880a4175639, type: 3}
+  m_Name: Question4
+  m_EditorClassIdentifier: Assembly-CSharp::QuizQuestion
+  title: "\u05E9\u05D0\u05DC\u05D4 4"
+  image: {fileID: 0}
+  text: "\u05DC\u05E4\u05E0\u05D9\u05DB\u05DD \u05DE\u05E2\u05E8\u05DB\u05EA \u05D2\u05DC\u05D2\u05DC\u05D9
+    \u05E9\u05D9\u05E0\u05D9\u05D9\u05DD\n\u05DE\u05D4 \u05D9\u05D4\u05D9\u05D4 \u05DB\u05D9\u05D5\u05D5\u05E0\u05D5
+    \u05E9\u05DC \u05D4\u05D2\u05D2\"\u05E9 \u05D4\u05DE\u05E1\u05D5\u05DE\u05DF?"
+  arPrefab: {fileID: 2971782887518591364, guid: d7316b03927d0eb4bbe6fb17069b6c21, type: 3}
+  hintText: "\u05E9\u05D9\u05DE\u05D5 \u05DC\u05D1 \u05DC\u05DE\u05E1\u05E4\u05E8
+    \u05D2\u05DC\u05D2\u05DC\u05D9 \u05E9\u05D9\u05E0\u05D9\u05D9\u05DD, \u05D0\u05D9
+    \u05D6\u05D5\u05D2\u05D9 \u05D0\u05D5 \u05D6\u05D5\u05D2\u05D9?"
+  answers:
+  - "\u05D0\u05D5\u05EA\u05D5 \u05DB\u05D9\u05D5\u05D5\u05DF \u05DB\u05DE\u05D5 \u05D4\u05D2\u05D2\"\u05E9
+    \u05D4\u05DB\u05D9 \u05E0\u05D2\u05D3\u05D9 \u05DC\u05D5"
+  - "\u05DB\u05D9\u05D5\u05D5\u05DF \u05E0\u05D2\u05D3\u05D9 \u05DC\u05D2\u05D2\"\u05E9
+    \u05D4\u05DB\u05D9 \u05E0\u05D2\u05D3\u05D9 \u05DC\u05D5"
+  correctAnswer: 0

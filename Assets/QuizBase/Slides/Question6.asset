@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a53d0608c759764e948d880a4175639, type: 3}
+  m_Name: Question6
+  m_EditorClassIdentifier: Assembly-CSharp::QuizQuestion
+  title: "\u05E9\u05D0\u05DC\u05D4 6 )\u05D1\u05D5\u05E0\u05D5\u05E1("
+  image: {fileID: 0}
+  text: "\u05D1\u05D4\u05D9\u05E0\u05EA\u05DF \u05DE\u05E2\u05E8\u05DB\u05EA \u05D2\u05D2\"\u05E9
+    \u05D4\u05D4\u05D1\u05D0\u05D4:\n\u05D4\u05D2\u05D2\"\u05E9 \u05D4\u05DE\u05E0\u05D9\u05E2
+    )\u05D4\u05D2\u05D3\u05D5\u05DC( \u05DE\u05E1\u05EA\u05D5\u05D1\u05D1 \u05D1\u05DE\u05D4\u05D9\u05E8\u05D5\u05EA
+    04 \u05DE\u05D8\u05E8 \u05DC\u05E9\u05E0\u05D9\u05D4\n\n\u05DC\u05D2\u05D2\"\u05E9
+    \u05D4\u05D2\u05D3\u05D5\u05DC\u05D9\u05DD 03 \u05E9\u05E0\u05D9\u05D9\u05DD
+    \u05D5\u05DC\u05E7\u05D8\u05E0\u05D9\u05DD 01 \u05E9\u05D9\u05E0\u05D9\u05D9\u05DD.\n\n\u05DE\u05D4
+    \u05EA\u05D4\u05D9\u05D4 \u05DE\u05D4\u05D9\u05E8\u05D5\u05EA \u05D4\u05D2\u05D2\"\u05E9
+    \u05D4\u05DE\u05D5\u05D3\u05D2\u05E9?"
+  arPrefab: {fileID: 2971782887518591364, guid: da088c7635af7d642ba20949a3861428, type: 3}
+  hintText: "\u05DB\u05D0\u05E9\u05E8 \u05D2\u05D2\"\u05E9 \u05DE\u05D7\u05D5\u05D1\u05E8\u05D9\u05DD
+    \u05D1\u05E6\u05D9\u05E8, \u05D4\u05DE\u05D4\u05D9\u05E8\u05D5\u05EA \u05E0\u05E9\u05D0\u05E8\u05EA
+    \u05D6\u05D4\u05D4 \u05D1\u05DC\u05D9 \u05E7\u05E9\u05E8 \u05DC\u05DE\u05E1\u05E4\u05E8
+    \u05D2\u05DC\u05D2\u05DC\u05D9 \u05E9\u05D9\u05E0\u05D9\u05D9\u05DD."
+  answers:
+  - "04 \u05DE\u05D8\u05E8 \u05DC\u05E9\u05E0\u05D9\u05D4"
+  - "021 \u05DE\u05D8\u05E8 \u05DC\u05E9\u05E0\u05D9\u05D4"
+  - "063 \u05DE\u05D8\u05E8 \u05DC\u05E9\u05E0\u05D9\u05D4"
+  - "042 \u05DE\u05D8\u05E8 \u05DC\u05E9\u05E0\u05D9\u05D4"
+  correctAnswer: 2

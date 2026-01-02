@@ -98,8 +98,9 @@ public class QuizManager : MonoBehaviour
             currentARPrefab = Instantiate(currentSlide.arPrefab);
             currentARPrefab.transform.SetParent(arAnchor, true);
 
-            currentARPrefab.transform.localPosition = new Vector3(-0.15f, 0.5f, 0);
+            currentARPrefab.transform.localPosition = new Vector3(-0.1f, 0.25f, 0);
             currentARPrefab.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            currentARPrefab.transform.localScale = Vector3.one * 0.15f;
         }
 
         // If question then we may update answers based on how many there are
