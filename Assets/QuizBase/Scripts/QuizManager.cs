@@ -4,14 +4,17 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-
+using System.Collections; 
+using TMPro;
 public class QuizManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public List<QuizSlide> slides;
-
+    public RotateUI rotateUI;
+    public int correctAnswers = 0;
     private int currentSlideIndex;
     private QuizSlide currentSlide => slides[currentSlideIndex];
+    private Coroutine badgeRoutine;
 
     public GameObject topPanel;
     public GameObject title;
@@ -21,10 +24,14 @@ public class QuizManager : MonoBehaviour
     public GameObject prevButton;
     public GameObject nextButton;
     public GameObject image;
+    public GameObject gear;
 
     public AudioSource audioSource;
     public AudioResource correctSound;
     public AudioResource incorrectSound;
+    public Animator gearAnimator;
+    public Animator gearAnimatorAlt;
+    public TMP_Text uiText; 
 
     private GameObject[] answers = new GameObject[4];
 
@@ -37,6 +44,9 @@ public class QuizManager : MonoBehaviour
         answers[1] = answersHolder.GetNamedChild("Answer2");
         answers[2] = answersHolder.GetNamedChild("Answer3");
         answers[3] = answersHolder.GetNamedChild("Answer4");
+        gear.SetActive(false);
+        if (uiText != null)
+            uiText.gameObject.SetActive(false);
         SetcurrentSlide();
     }
 
@@ -56,9 +66,20 @@ public class QuizManager : MonoBehaviour
     {
         // Check answer
         if ((currentSlide as QuizQuestion).correctAnswer == answer)
-        {
+        {   
+            // Increment counter
+            correctAnswers++;
+            // Update text
+            rotateUI.uiText.text = correctAnswers.ToString();
             audioSource.resource = correctSound;
             NextSlide();
+            if(badgeRoutine != null)
+                StopCoroutine(badgeRoutine);
+            gear.SetActive(true);
+            badgeRoutine = StartCoroutine(HideBadgeAfterSeconds(4f));
+            gearAnimator.Play("Badge", 0, 0f);
+            gearAnimatorAlt.Play("Text (TMP)", 0, 0f);
+            
         } else
         {
             answers[answer].GetComponent<Animator>().Play("Incorrect"); // Show incorrect button animation
@@ -66,6 +87,13 @@ public class QuizManager : MonoBehaviour
             hintText.SetActive(true);
         }
         audioSource.Play(); // Play audio either correct or incorrect
+    }
+    private IEnumerator HideBadgeAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        gear.SetActive(false);
+        rotateUI.StopParticles();
+        rotateUI.HideText();
     }
 
     /**
