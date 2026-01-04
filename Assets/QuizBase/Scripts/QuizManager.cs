@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using System.Collections; 
-using TMPro;
+
 public class QuizManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +23,7 @@ public class QuizManager : MonoBehaviour
     public GameObject answersHolder;
     public GameObject prevButton;
     public GameObject nextButton;
+    public GameObject restartButton;
     public GameObject image;
     public GameObject gear;
 
@@ -35,11 +36,22 @@ public class QuizManager : MonoBehaviour
 
     private GameObject[] answers = new GameObject[4];
 
+    private enum QuestionState
+    {
+        UNANSWERED,
+        INCORRECT,
+        CORRECT
+    }
+
+    private QuestionState[] questionsState;
+
     private GameObject currentARPrefab;
     public Transform arAnchor;
 
     void Start()
     {
+        GameObject.Find("Welcome")?.SetActive(false);
+
         answers[0] = answersHolder.GetNamedChild("Answer1");
         answers[1] = answersHolder.GetNamedChild("Answer2");
         answers[2] = answersHolder.GetNamedChild("Answer3");
@@ -47,6 +59,9 @@ public class QuizManager : MonoBehaviour
         gear.SetActive(false);
         if (uiText != null)
             uiText.gameObject.SetActive(false);
+
+        questionsState = new QuestionState[slides.Count];
+
         SetcurrentSlide();
     }
 
@@ -62,31 +77,46 @@ public class QuizManager : MonoBehaviour
         SetcurrentSlide();
     }
 
+    public void RestartSlide()
+    {
+        currentSlideIndex = 0;
+        SetcurrentSlide();
+    }
+
     public void CheckAnswer(int answer)
     {
+        QuizQuestion question = (QuizQuestion)currentSlide;
         // Check answer
-        if ((currentSlide as QuizQuestion).correctAnswer == answer)
+        if (question.correctAnswer == answer)
         {   
-            // Increment counter
-            correctAnswers++;
-            // Update text
-            rotateUI.uiText.text = correctAnswers.ToString();
-            audioSource.resource = correctSound;
+            if (questionsState[currentSlideIndex] == 0)
+            {
+                questionsState[currentSlideIndex] = QuestionState.CORRECT;
+                // Increment counter
+                correctAnswers++;
+
+                if(badgeRoutine != null)
+                    StopCoroutine(badgeRoutine);
+                gear.SetActive(true);
+                badgeRoutine = StartCoroutine(HideBadgeAfterSeconds(4f));
+                gearAnimator.Play("Badge", 0, 0f);
+                gearAnimatorAlt.Play("Text (TMP)", 0, 0f);
+
+                // Update text
+                rotateUI.uiText.text = correctAnswers.ToString();
+                audioSource.resource = correctSound;
+                audioSource.Play();
+            }
+
             NextSlide();
-            if(badgeRoutine != null)
-                StopCoroutine(badgeRoutine);
-            gear.SetActive(true);
-            badgeRoutine = StartCoroutine(HideBadgeAfterSeconds(4f));
-            gearAnimator.Play("Badge", 0, 0f);
-            gearAnimatorAlt.Play("Text (TMP)", 0, 0f);
-            
         } else
         {
+            questionsState[currentSlideIndex] = QuestionState.INCORRECT;
             answers[answer].GetComponent<Animator>().Play("Incorrect"); // Show incorrect button animation
             audioSource.resource = incorrectSound;
             hintText.SetActive(true);
+            audioSource.Play();
         }
-        audioSource.Play(); // Play audio either correct or incorrect
     }
     private IEnumerator HideBadgeAfterSeconds(float seconds)
     {
@@ -103,15 +133,25 @@ public class QuizManager : MonoBehaviour
     {
         hintText.SetActive(false);
         title.GetComponent<TextMeshProUGUI>().SetText(currentSlide.title);
-        text.GetComponent<TextMeshProUGUI>().SetText(currentSlide.text);
         image.GetComponent<Image>().sprite = currentSlide.image;
         image.SetActive(currentSlide.image != null);
 
         var isQuiz = currentSlide is QuizQuestion;
+        var lastSlide = currentSlideIndex == (slides.Count-1);
         answersHolder.SetActive(isQuiz);
         prevButton.SetActive(currentSlideIndex != 0);
-        nextButton.SetActive(!isQuiz && currentSlideIndex != (slides.Count-1));
+        nextButton.SetActive(!isQuiz && !lastSlide);
+        restartButton.SetActive(lastSlide);
         hintText.SetActive(false);
+
+        var textStr = currentSlide.text;
+
+        if (lastSlide)
+        {
+            textStr += $"\nקיבלתם: {correctAnswers} נקודות!";
+        }
+
+        text.GetComponent<TextMeshProUGUI>().SetText(textStr);
 
         // Force update (fixes a bug with Vertical Layout)
         LayoutRebuilder.ForceRebuildLayoutImmediate(topPanel.GetComponent<RectTransform>());
@@ -136,26 +176,25 @@ public class QuizManager : MonoBehaviour
         {
             var currentQuestion = currentSlide as QuizQuestion;
 
+            if (questionsState[currentSlideIndex] != QuestionState.UNANSWERED)
+            {
+                nextButton.SetActive(true);
+            }
+
             hintText.GetComponent<TextMeshProUGUI>().SetText(currentQuestion.hintText);
 
-            answers[0].GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[0]);
-            answers[1].GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[1]);
-            if (currentQuestion.answers.Length > 2)
+            for (int i = 0; i < answers.Length; i++)
             {
-                answers[2].SetActive(true);
-                answers[2].GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[2]);
-            } else
-            {
-                answers[2].SetActive(false);
-            }
-            
-            if (currentQuestion.answers.Length > 3)
-            {
-                answers[3].SetActive(true);
-                answers[3].GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[3]);
-            } else
-            {
-                answers[3].SetActive(false);
+                var answer = answers[i];
+                answer.GetComponent<Button>().interactable = questionsState[currentSlideIndex] == QuestionState.UNANSWERED;
+
+                answer.SetActive(true);                
+                answer.GetComponent<Animator>().Play("Empty");
+                answer.SetActive((i+1) <= currentQuestion.answers.Length);
+                if (answer.activeSelf)
+                {
+                    answer.GetComponentInChildren<TextMeshProUGUI>().SetText(currentQuestion.answers[i]);
+                }
             }
         }
     }

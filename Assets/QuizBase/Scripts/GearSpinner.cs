@@ -18,8 +18,6 @@ public class GearSpinner : MonoBehaviour
 
     public int maxTurns;
 
-    public GameObject trailPoint;
-
     public float resetSeconds;
 
     private float resetT;
@@ -27,14 +25,6 @@ public class GearSpinner : MonoBehaviour
     private int turns;
 
     private float currentAngle;
-
-    void Awake()
-    {
-        if (trailPoint != null)
-        {
-            trailPoint.GetComponent<TrailRenderer>().time = 360f/angularSpeedDeg + 0.25f;
-        }
-    }
 
     // Update is called once per frame
     void Update()
@@ -54,11 +44,6 @@ public class GearSpinner : MonoBehaviour
             if (turnsText != null)
             {
                 turnsText.GetComponent<TextMeshProUGUI>().SetText("0");
-            }
-
-            if (trailPoint != null)
-            {
-                trailPoint.GetComponent<TrailRenderer>().Clear();
             }
         }
     }
