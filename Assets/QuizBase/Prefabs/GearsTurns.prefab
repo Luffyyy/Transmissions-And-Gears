@@ -76,8 +76,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294913536
-  m_fontColor: {r: 0, g: 0.18039216, b: 1, a: 1}
+    rgba: 4278213887
+  m_fontColor: {r: 1, g: 0.36078432, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -382,8 +382,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294913536
-  m_fontColor: {r: 0, g: 0.1802516, b: 1, a: 1}
+    rgba: 4278213887
+  m_fontColor: {r: 1, g: 0.36153623, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -639,6 +639,42 @@ PrefabInstance:
     - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
       propertyPath: m_Time
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.24705878
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.61733526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.007843131
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.28890643
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.b
+      value: 0.015686283
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.g
+      value: 0.19728021
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.r
+      value: 0.3764706
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -906,6 +942,46 @@ PrefabInstance:
     - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
       propertyPath: m_Time
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.24705878
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.61733526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.007843131
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.28890643
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.b
+      value: 0.015686283
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.g
+      value: 0.19728021
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507681958936398377, guid: 8826b14e3537a3549a2652204e2deb8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.r
+      value: 0.3764706
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 3a53d0608c759764e948d880a4175639, type: 3}
   m_Name: Question2
   m_EditorClassIdentifier: Assembly-CSharp::QuizQuestion
   title: "\u05E9\u05D0\u05DC\u05D4 2"
   image: {fileID: 0}
-  text: "\u05D2\u05D2\"\u05E9 A \u05E2\u05DD Z1 \u05E9\u05D9\u05E0\u05D9\u05D9\u05DD
+  text: "\u05D2\u05D2\"\u05E9 A \u05E2\u05DD 1Z \u05E9\u05D9\u05E0\u05D9\u05D9\u05DD
     \u05DE\u05D5\u05E0\u05E2 \u05E2\u05DC \u05D9\u05D3\u05D9 \u05DE\u05E0\u05D5\u05E2\n\u05DE\u05D7\u05D1\u05E8\u05D9\u05DD
     \u05D2\u05D2\"\u05E9 \u05E0\u05D5\u05E1\u05E3 B \u05DC\u05DE\u05E2\u05E8\u05DB\u05EA
     \u05E2\u05DD \u05DE\u05E1\u05E4\u05E8 \u05E9\u05D5\u05D5\u05D4 \u05E9\u05DC \u05E9\u05D9\u05E0\u05D9\u05D9\u05DD\n\u05DE\u05D4

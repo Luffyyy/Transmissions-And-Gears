@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 3a53d0608c759764e948d880a4175639, type: 3}
   m_Name: Question1
   m_EditorClassIdentifier: Assembly-CSharp::QuizQuestion
   title: "\u05E9\u05D0\u05DC\u05D4 1"
