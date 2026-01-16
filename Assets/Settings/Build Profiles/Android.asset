@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 15003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Background
+  m_Name: Android
   m_EditorClassIdentifier: UnityEditor.dll::UnityEditor.Build.Profile.BuildProfile
   m_AssetVersion: 1
   m_BuildTarget: 13
@@ -18,11 +18,11 @@ MonoBehaviour:
   m_PlatformId: b9b35072a6f44c2e863f17467ea3dc13
   m_PlatformBuildProfile:
     rid: 148750995071434761
-  m_OverrideGlobalSceneList: 1
+  m_OverrideGlobalSceneList: 0
   m_Scenes:
-  - m_enabled: 0
-    m_path: Assets/Scenes/SampleScene.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/SampleScene.unity
+  - m_enabled: 0
     m_path: Assets/Scenes/CameralessScene.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
@@ -39,7 +39,7 @@ MonoBehaviour:
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
     - line: '|   companyName: Daniel-Elias-Chen'
-    - line: '|   productName: Transmissions and Gears Background'
+    - line: '|   productName: ''Transmissions and Gears '''
     - line: '|   defaultCursor: {instanceID: 0}'
     - line: '|   cursorHotspot: {x: 0, y: 0}'
     - line: '|   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b:
@@ -196,7 +196,7 @@ MonoBehaviour:
     - line: '|   androidMaxAspectRatio: 2.4'
     - line: '|   androidMinAspectRatio: 1'
     - line: '|   applicationIdentifier:'
-    - line: '|     Android: com.ar_course.transmissions_and_gears_bg'
+    - line: '|     Android: com.ar_course.transmissions_and_gears'
     - line: '|     Standalone: com.unity.template.ar-mobile'
     - line: '|     iPhone: com.unity.template.armobile'
     - line: '|   buildNumber:'
