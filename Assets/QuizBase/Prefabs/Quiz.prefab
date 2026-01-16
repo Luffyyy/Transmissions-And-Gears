@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545, y: -750.69}
+  m_AnchoredPosition: {x: 540, y: -750.69}
   m_SizeDelta: {x: 940, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8852683558558025728
@@ -126,7 +126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545, y: -112}
+  m_AnchoredPosition: {x: 540, y: -112}
   m_SizeDelta: {x: 1040, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3298932115700717588
@@ -7177,7 +7177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545, y: -412.69}
+  m_AnchoredPosition: {x: 540, y: -412.69}
   m_SizeDelta: {x: 940, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8236321599248373139
@@ -7500,7 +7500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u05D7\u05D6\u05E8\u05D4 \u05DC\u05D4\u05EA\u05D7\u05DC\u05D4"
+  m_text: "\u05D4\u05EA\u05D7\u05DC \u05DE\u05D7\u05D3\u05E9"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -7789,7 +7789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545, y: -32}
+  m_AnchoredPosition: {x: 540, y: -32}
   m_SizeDelta: {x: 928.45, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &223789126835605018
@@ -8229,8 +8229,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545, y: -442.84}
-  m_SizeDelta: {x: 962, y: 0}
+  m_AnchoredPosition: {x: 540, y: -442.84}
+  m_SizeDelta: {x: 952, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4298479818697178865
 CanvasRenderer:

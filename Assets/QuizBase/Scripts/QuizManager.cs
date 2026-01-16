@@ -4,7 +4,8 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using System.Collections; 
+using System.Collections;
+using System.Drawing;
 
 public class QuizManager : MonoBehaviour
 {
@@ -80,6 +81,9 @@ public class QuizManager : MonoBehaviour
     public void RestartSlide()
     {
         currentSlideIndex = 0;
+        correctAnswers = 0;
+        questionsState = new QuestionState[slides.Count];
+
         SetcurrentSlide();
     }
 
@@ -164,6 +168,7 @@ public class QuizManager : MonoBehaviour
         if (currentSlide.arPrefab != null)
         {
             currentARPrefab = Instantiate(currentSlide.arPrefab);
+            currentARPrefab.AddComponent<GearTouchControls>(); // ALlow the user to rotate it in the Y rotation axis
             currentARPrefab.transform.SetParent(arAnchor, true);
 
             currentARPrefab.transform.localPosition = new Vector3(-0.1f, 0.25f, 0);
