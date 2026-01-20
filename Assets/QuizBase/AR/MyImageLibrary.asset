@@ -21,9 +21,9 @@ MonoBehaviour:
       m_GuidLow: 5658957234350756924
       m_GuidHigh: 17475624905507524267
     m_SerializedTextureGuid:
-      m_GuidLow: 15448591614672205113
-      m_GuidHigh: 9809850717268565850
-    m_Size: {x: 0.3, y: 0.42410672}
+      m_GuidLow: 13088785661762051846
+      m_GuidHigh: 4385010343601931928
+    m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: ImageTest
+    m_Name: GearsInitiate
     m_Texture: {fileID: 0}
